@@ -2,19 +2,22 @@
   const config = window.APP_CONFIG || {};
   const apiBase = (config.API_BASE_URL || "").replace(/\/+$/, "");
   const rawBase = "https://raw.githubusercontent.com/jpgsea-droid/panel-textos/main/";
+  const commitsBase = "https://api.github.com/repos/jpgsea-droid/panel-textos/commits?per_page=1&path=";
   const form = document.getElementById("send-form");
   const input = document.getElementById("input-text");
   const sendButton = document.getElementById("send-button");
   const sendStatus = document.getElementById("send-status");
   const count = document.getElementById("char-count");
   const honeypot = document.getElementById("website");
+  const linksToggle = document.getElementById("links-toggle");
+  const linksPanel = document.getElementById("links-panel");
+  const linksStatus = document.getElementById("links-status");
   const refreshButton = document.getElementById("refresh-button");
-  const updatedStatus = document.getElementById("outputs-updated");
 
   const outputs = [
-    { key: "ino", file: "salida.ino", elementId: "output-ino", statusId: "status-ino", copyId: "copy-ino", empty: "(El archivo salida.ino está vacío.)" },
-    { key: "json", file: "salida.json", elementId: "output-json", statusId: "status-json", copyId: "copy-json", empty: "(El archivo salida.json está vacío.)" },
-    { key: "extra", file: "extra.txt", elementId: "output-extra", statusId: "status-extra", copyId: "copy-extra", empty: "(El archivo extra.txt está vacío.)" }
+    { key: "ino", file: "salida.ino", timeId: "time-ino", copyId: "copy-ino", label: ".ino", content: null, loaded: false },
+    { key: "json", file: "salida.json", timeId: "time-json", copyId: "copy-json", label: ".json", content: null, loaded: false },
+    { key: "extra", file: "extra.txt", timeId: "time-extra", copyId: "copy-extra", label: ".txt", content: null, loaded: false }
   ];
 
   function apiReady() {
@@ -28,59 +31,100 @@
     count.textContent = `${input.value.length} / 20000`;
   });
 
-  async function loadOne(output) {
-    const element = document.getElementById(output.elementId);
-    const note = document.getElementById(output.statusId);
-    note.textContent = "Cargando desde GitHub…";
+  function formatUpdatedAt(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "Hora no disponible";
+    return date.toLocaleString(undefined, {
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit"
+    });
+  }
+
+  async function updateLastModified(output) {
+    const timeElement = document.getElementById(output.timeId);
+    try {
+      const url = `${commitsBase}${encodeURIComponent(output.file)}`;
+      const response = await fetch(url, { cache: "no-store", headers: { "Accept": "application/vnd.github+json" } });
+      if (!response.ok) throw new Error("No disponible");
+      const commits = await response.json();
+      const date = commits?.[0]?.commit?.committer?.date || commits?.[0]?.commit?.author?.date;
+      if (!date) throw new Error("No disponible");
+      timeElement.textContent = `Última actualización: ${formatUpdatedAt(date)}`;
+    } catch {
+      timeElement.textContent = "Última actualización: hora no disponible";
+    }
+  }
+
+  async function loadOutput(output) {
+    const button = document.getElementById(output.copyId);
+    const timeElement = document.getElementById(output.timeId);
     try {
       const response = await fetch(`${rawBase}${output.file}?t=${Date.now()}`, { cache: "no-store" });
       if (!response.ok) throw new Error(`GitHub respondió HTTP ${response.status}`);
-      const content = await response.text();
-      element.textContent = content || output.empty;
-      note.textContent = "Actualizado desde GitHub";
+      output.content = await response.text();
+      output.loaded = true;
+      button.disabled = false;
+      await updateLastModified(output);
       return true;
     } catch (error) {
-      element.textContent = "No fue posible cargar este archivo. Pulsa “Actualizar las tres salidas” para intentarlo de nuevo.";
-      note.textContent = error.message || "Error de conexión";
+      output.content = null;
+      output.loaded = false;
+      button.disabled = true;
+      timeElement.textContent = "Archivo no disponible";
+      linksStatus.textContent = `No se pudo cargar ${output.file}. Intenta actualizar.`;
       return false;
     }
   }
 
-  async function loadOutputs() {
+  async function loadAllOutputs() {
     refreshButton.disabled = true;
-    updatedStatus.textContent = "Actualizando las tres salidas…";
-    const results = await Promise.all(outputs.map(loadOne));
-    updatedStatus.textContent = results.every(Boolean)
-      ? `Última consulta: ${new Date().toLocaleString()}`
-      : "Una o más salidas no pudieron cargarse.";
+    linksStatus.textContent = "Actualizando archivos y horas…";
+    const result = await Promise.all(outputs.map(loadOutput));
+    const loadedCount = result.filter(Boolean).length;
+    linksStatus.textContent = loadedCount === outputs.length
+      ? "Archivos listos para copiar."
+      : `Se pudieron cargar ${loadedCount} de ${outputs.length} archivos.`;
     refreshButton.disabled = false;
   }
 
   async function copyOutput(output) {
-    const element = document.getElementById(output.elementId);
-    const note = document.getElementById(output.statusId);
+    if (!output.loaded || typeof output.content !== "string") {
+      linksStatus.textContent = `${output.label}: el archivo aún no está disponible.`;
+      return;
+    }
     const button = document.getElementById(output.copyId);
-    const text = element.textContent || "";
     try {
-      await navigator.clipboard.writeText(text);
-      note.textContent = "Contenido copiado al portapapeles.";
+      await navigator.clipboard.writeText(output.content);
+      linksStatus.textContent = `${output.label} copiado al portapapeles.`;
     } catch {
-      const range = document.createRange();
-      range.selectNodeContents(element);
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      const copied = document.execCommand("copy");
-      selection.removeAllRanges();
-      note.textContent = copied ? "Contenido copiado al portapapeles." : "No se pudo copiar automáticamente; selecciona y copia el texto manualmente.";
+      const area = document.createElement("textarea");
+      area.value = output.content;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      let copied = false;
+      try { copied = document.execCommand("copy"); } catch { copied = false; }
+      area.remove();
+      linksStatus.textContent = copied
+        ? `${output.label} copiado al portapapeles.`
+        : "No se pudo copiar automáticamente en este navegador.";
     }
     button.blur();
   }
 
+  linksToggle.addEventListener("click", () => {
+    const expanded = linksToggle.getAttribute("aria-expanded") === "true";
+    linksToggle.setAttribute("aria-expanded", String(!expanded));
+    linksPanel.hidden = expanded;
+    if (!expanded && outputs.every(output => !output.loaded)) loadAllOutputs();
+  });
+
   outputs.forEach(output => {
     document.getElementById(output.copyId).addEventListener("click", () => copyOutput(output));
   });
-  refreshButton.addEventListener("click", loadOutputs);
+  refreshButton.addEventListener("click", loadAllOutputs);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -114,5 +158,6 @@
     }
   });
 
-  loadOutputs();
+  // Fetch file timestamps/content once at startup; the panel remains collapsed.
+  loadAllOutputs();
 })();
