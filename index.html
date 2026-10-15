@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
   <title>Panel de textos</title>
-  <link rel="stylesheet" href="styles.css?v=20261015-3salidas">
+  <link rel="stylesheet" href="styles.css?v=20261015-links-copy-1">
 </head>
 <body>
   <main class="page">
     <header class="hero">
       <div class="eyebrow">ESPACIO PÚBLICO</div>
       <h1>Panel de textos</h1>
-      <p>Envía un texto y consulta las tres salidas publicadas.</p>
+      <p>Envía un texto para procesarlo.</p>
     </header>
 
     <section class="panel" aria-labelledby="send-title">
@@ -38,60 +38,31 @@
       </form>
     </section>
 
-    <section class="outputs-section" aria-labelledby="outputs-title">
-      <div class="section-heading output-main-heading">
-        <span class="number blue">02</span>
-        <div>
-          <h2 id="outputs-title">Salidas recibidas</h2>
-          <p>Estos tres cuadros son de solo lectura. Puedes copiar cada contenido por separado.</p>
+    <section class="links-area" aria-label="Copiar archivos">
+      <button id="links-toggle" class="links-toggle" type="button" aria-expanded="false" aria-controls="links-panel">
+        Links <span id="links-chevron" aria-hidden="true">⌄</span>
+      </button>
+      <div id="links-panel" class="links-panel" hidden>
+        <div class="copy-item">
+          <span id="time-ino" class="last-updated">Última actualización: consultando…</span>
+          <button id="copy-ino" class="file-chip" type="button" disabled>.ino</button>
         </div>
-      </div>
-
-      <article class="panel output-card">
-        <div class="output-heading">
-          <div>
-            <span class="file-type">ARCHIVO 1</span>
-            <h2>.ino</h2>
-          </div>
-          <button id="copy-ino" class="secondary copy-button" type="button">Copiar .ino</button>
+        <div class="copy-item">
+          <span id="time-json" class="last-updated">Última actualización: consultando…</span>
+          <button id="copy-json" class="file-chip" type="button" disabled>.json</button>
         </div>
-        <pre id="output-ino" class="output" tabindex="0" aria-label="Contenido .ino">Cargando archivo…</pre>
-        <p id="status-ino" class="output-status" role="status" aria-live="polite">Consultando GitHub…</p>
-      </article>
-
-      <article class="panel output-card">
-        <div class="output-heading">
-          <div>
-            <span class="file-type">ARCHIVO 2</span>
-            <h2>json</h2>
-          </div>
-          <button id="copy-json" class="secondary copy-button" type="button">Copiar JSON</button>
+        <div class="copy-item">
+          <span id="time-extra" class="last-updated">Última actualización: consultando…</span>
+          <button id="copy-extra" class="file-chip" type="button" disabled>.txt</button>
         </div>
-        <pre id="output-json" class="output" tabindex="0" aria-label="Contenido JSON">Cargando archivo…</pre>
-        <p id="status-json" class="output-status" role="status" aria-live="polite">Consultando GitHub…</p>
-      </article>
-
-      <article class="panel output-card">
-        <div class="output-heading">
-          <div>
-            <span class="file-type">ARCHIVO 3</span>
-            <h2>extra</h2>
-          </div>
-          <button id="copy-extra" class="secondary copy-button" type="button">Copiar extra</button>
-        </div>
-        <pre id="output-extra" class="output" tabindex="0" aria-label="Contenido extra">Cargando archivo…</pre>
-        <p id="status-extra" class="output-status" role="status" aria-live="polite">Consultando GitHub…</p>
-      </article>
-
-      <div class="refresh-row">
-        <span id="outputs-updated" class="muted">Las salidas se cargan desde GitHub.</span>
-        <button id="refresh-button" class="secondary" type="button">Actualizar las tres salidas</button>
+        <p id="links-status" class="links-status" role="status" aria-live="polite"></p>
+        <button id="refresh-button" class="refresh-button" type="button">Actualizar horas</button>
       </div>
     </section>
 
     <footer>Los envíos y archivos son públicos. No incluyas contraseñas ni información privada.</footer>
   </main>
-  <script src="config.js?v=20261015-3salidas"></script>
-  <script src="app.js?v=20261015-3salidas"></script>
+  <script src="config.js?v=20261015-links-copy-1"></script>
+  <script src="app.js?v=20261015-links-copy-1"></script>
 </body>
 </html>
