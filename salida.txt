@@ -1,1 +1,1 @@
-Este es el texto que se mostrará en la casilla fija. Edítalo directamente en GitHub cuando quieras cambiar lo que ven los visitantes.
+casilla 1 
