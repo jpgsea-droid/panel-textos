@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
   <title>Panel de textos</title>
-  <link rel="stylesheet" href="styles.css?v=20261015-links-copy-1">
+  <link rel="stylesheet" href="styles.css?v=20261015-send-slim-2">
 </head>
 <body>
   <main class="page">
@@ -15,27 +15,17 @@
       <p>Envía un texto para procesarlo.</p>
     </header>
 
-    <section class="panel" aria-labelledby="send-title">
-      <div class="section-heading">
-        <span class="number">01</span>
-        <div>
-          <h2 id="send-title">Enviar un texto</h2>
-          <p>El texto enviado reemplaza el contenido de <code>entrada.txt</code> en GitHub.</p>
-        </div>
-      </div>
-      <form id="send-form">
-        <label for="input-text">Texto para enviar</label>
-        <textarea id="input-text" name="text" maxlength="20000" placeholder="Pega o escribe aquí el texto que quieres enviar…" required></textarea>
-        <div class="form-meta">
-          <span id="char-count">0 / 20000</span>
-          <button id="send-button" type="submit">Enviar texto <span aria-hidden="true">↗</span></button>
-        </div>
-        <p id="send-status" class="status" role="status" aria-live="polite"></p>
+    <section class="send-strip" aria-label="Enviar texto">
+      <form id="send-form" class="send-form">
+        <label class="visually-hidden" for="input-text">Texto para enviar</label>
+        <textarea id="input-text" class="send-field" name="text" rows="1" wrap="off" maxlength="20000" placeholder="Pega tu texto aquí…" aria-label="Pega o escribe el texto que quieres enviar" required></textarea>
+        <button id="send-button" class="send-button" type="submit">Enviar</button>
         <div class="honeypot" aria-hidden="true">
           <label for="website">No rellenar</label>
           <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
       </form>
+      <p id="send-status" class="status" role="status" aria-live="polite"></p>
     </section>
 
     <section class="links-area" aria-label="Copiar archivos">
@@ -62,7 +52,7 @@
 
     <footer>Los envíos y archivos son públicos. No incluyas contraseñas ni información privada.</footer>
   </main>
-  <script src="config.js?v=20261015-links-copy-1"></script>
-  <script src="app.js?v=20261015-links-copy-1"></script>
+  <script src="config.js?v=20261015-send-slim-2"></script>
+  <script src="app.js?v=20261015-send-slim-2"></script>
 </body>
 </html>
