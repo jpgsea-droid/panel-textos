@@ -1,0 +1,9 @@
+name = "panel-textos-api"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+GITHUB_OWNER = "jpgsea-droid"
+GITHUB_REPO = "panel-textos"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGIN = "https://jpgsea-droid.github.io"
