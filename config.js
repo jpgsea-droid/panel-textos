@@ -1,4 +1,4 @@
-// Se configurará cuando el backend esté publicado.
+// URL del backend de Cloudflare Workers.
 window.APP_CONFIG = {
-  API_BASE_URL: "PEGA_AQUI_LA_URL_DE_TU_WORKER"
+  API_BASE_URL: "https://panel-textos-api.jpgsea.workers.dev"
 };
