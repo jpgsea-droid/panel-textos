@@ -1,0 +1,2 @@
+SALIDA EXTRA
+Edita este archivo en GitHub para cambiar el contenido que aparece en el cuadro extra.
