@@ -4,16 +4,90 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f7fb">
-  <title>Panel de textos</title>
-  <link rel="stylesheet" href="styles.css?v=20261015-send-slim-2">
+  <title>Especificaciones del módulo ESP32</title>
+  <link rel="stylesheet" href="styles.css?v=20261015-esp32-article-1">
 </head>
 <body>
   <main class="page">
-    <header class="hero">
-      <div class="eyebrow">ESPACIO PÚBLICO</div>
-      <h1>Panel de textos</h1>
-      <p>Envía un texto para procesarlo.</p>
-    </header>
+
+    <article class="reference-article">
+      <h1 class="article-title">▷ Especificaciones del módulo ESP32</h1>
+      <div class="article-content">
+        <h2>⭐⭐⭐⭐⭐ Especificaciones del módulo #ESP32</h2>
+    
+        <h3>✅ Módulo ESP32 (ESP-WROOM-32)</h3>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrW_XK8NA6iEWP04ahhA3hUbB9TkLdeRnECh-9sQHLkG0m5_FIogpinEXzy9AD0lwb3kS6KKQIx3SEpUq33jvhHRGgqhAS2hvE47NJgvAsTMLHs5BDUgq4vgFCMkSex_cxhcRRCFbSd4k/w640-h318/ESP32.jpg" alt="Módulo ESP32 ESP-WROOM-32" loading="lazy">
+    
+        <h3>✅ Módulo ESP32 (HUZZAH32)</h3>
+        <p>El #HUZZAH32 es módulo de desarrollo basado en #ESP32, hecha con el módulo oficial WROOM32. Este hardware contiene: convertidor USB a serie incorporado, reinicio automático del cargador de arranque, cargador de iones de litio / polímero, y casi todos los GPIO que sacaste para que puedas usarlo con cualquiera de nuestras alas de plumas.</p>
+        <div class="article-images two">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH6Vmqr9wYuYc129FycoqFmH_3OAqGs14XhH0vjyPGd8j-zIvUb_lpY_wW_IqLGIYN76wLUNQb9mPhCpYz9LLO8SzPhyphenhyphenmVOSNlI7pxm8rgERG6wL8JbmlmBoZ2bryx7JUurouQSP3OseE/s320/esp.gif" alt="Módulo HUZZAH32" loading="lazy">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgun0JUNImPnN02ijxPJzOqctl2WqVC4j2IQ3Yre4ndOe1u9Moox1bn3uEvvQjkbTO3bqOQqTohhvA6m0Cim7LZ4M_VHOhCuMDCD-Yuh9TxriCaFtlo6G_LmVSfci1MibtWppPw0ZG9iq8/s320/Esquematico.png" alt="Esquemático ESP32" loading="lazy">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhINXpF4guTLKY3RDqYCu3DUNsXpKMOBVgqVncUlYdfYf2Cmq5BM5GF9ujSUIcoGtIy8VcEQavYxi0LPq2ugibHz94YsEG8b0k2HllKsgb1bQzhBrcPwfQWR3l4svFpbKsg5MJDESriai8/s320/PCB.png" alt="PCB ESP32" loading="lazy">
+        </div>
+    
+        <p>El ESP32 es una actualización perfecta del ESP8266 que ha sido tan popular. En comparación, el ESP32 tiene mucho más GPIO, muchas entradas analógicas, dos salidas analógicas, múltiples periféricos adicionales (como un UART de repuesto), dos núcleos para que no tenga que ceder ante el administrador de WiFi, procesador de mayor velocidad, ¡etcétera etcétera! Creemos que a medida que el ESP32 obtenga tracción, veremos a más personas moverse a este chip exclusivamente, ya que tiene todas las funciones.</p>
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/overview" target="_blank" rel="noopener noreferrer">Overview</a></h3>
+        <ul>
+          <li>240 MHz dual core Tensilica LX6 microcontroller with 600 DMIPS</li>
+          <li>Integrated 520 KB SRAM</li>
+          <li>Integrated 802.11b/g/n HT40 Wi-Fi transceiver, baseband, stack and LWIP</li>
+          <li>Integrated dual mode Bluetooth (classic and BLE)</li>
+          <li>4 MByte flash include in the WROOM32 module</li>
+          <li>On-board PCB antenna</li>
+          <li>Ultra-low noise analog amplifier</li>
+          <li>Hall sensor</li>
+          <li>10x capacitive touch interface</li>
+          <li>32 kHz crystal oscillator</li>
+          <li>3 x UARTs (only two are configured by default in the Feather Arduino IDE support, one UART is used for bootloading/debug)</li>
+          <li>3 x SPI (only one is configured by default in the Feather Arduino IDE support)</li>
+          <li>2 x I2C (only one is configured by default in the Feather Arduino IDE support)</li>
+          <li>12 x ADC input channels</li>
+          <li>2 x I2S Audio</li>
+          <li>2 x DAC</li>
+          <li>PWM/timer input/output available on every GPIO pin</li>
+          <li>OpenOCD debug interface with 32 kB TRAX buffer</li>
+          <li>SDIO master/slave 50 MHz</li>
+          <li>SD-card interface support</li>
+        </ul>
+        <div class="article-images two">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRX_xViB5rKLV2N4H9ZBEnOmN0CJM-1pnb_f5fRu8cSKK_uUNQWZ1Zz03_dl2T5OoGBINshKkv0-1SKr3tUca88dFqoy7qGYvh9pQlL7cXmIoh8c50-JAbeQNZIbYEf-ThyqAKeQT7bhY/w320-h320/espv2.jpeg" alt="Vista del ESP32" loading="lazy">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6b3M1XYK7idRywi0U1hsiXdSk2Fj6nTkIK_EOSg68DGoe7dLk9ZOdGiNWVOKtz7r0v6NpKfmuKPMJkiPi53k0_rDhdwrswHpHS-ZKxTqVODcdLpFe7JnFHbc_764fAS_A9rKdlR7Yq6s/s320/esp_arduino_ide.jpeg" alt="ESP32 en Arduino IDE" loading="lazy">
+        </div>
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/pinouts" target="_blank" rel="noopener noreferrer">Pinouts</a></h3>
+        <p>Una de las mejores cosas del ESP32 es que tiene mucho más GPIO que el ESP8266.</p>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhq6hltPol6KZboyoCeim4An223jAg6hlHQw7OqLPEsn9k2OqC3A0n-13DJUxSdIGy54Qv9GdXxWUCsm3X9IUiRYgQz-DIooaS_Aq6nyCQgPCGQcbYV6uvQ_y55gVYBsal8Y44AL4bpmnI/s320/inout.jpg" alt="Entradas y salidas del ESP32" loading="lazy">
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/assembly" target="_blank" rel="noopener noreferrer">Assembly</a></h3>
+        <p>Para soldar los espadines, cortar la tira a la longitud exacta del módulo ESP32 (si es necesario). Será más fácil soldarlo si lo inserta en una placa de pruebas: alfileres largos hacia abajo. Luego, coloque el módulo ESP32 sobre los espadines de modo que los pasadores cortos pasen a través de las orificios en la PCB. Finalmente, asegúrese de soldar todos los pines para un contacto eléctrico confiable.</p>
+        <div class="article-images two">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisuWXQg3_UwTR_bOK5fD2nGQC5PwoJKReEe5n9q3f71GraREVPOXYYxZKMD2cDh0V_h05n7caef4y-LCpSqKEX7QmbvZfp9Ve79mjffEUOKwsT5MTb1RSsKSZ7f_n3lMyjGZfegmronf0/s320/espadines1.jpg" alt="Montaje de espadines ESP32" loading="lazy">
+          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqY_E1KamlbZwcpDUmKcdRtRyCbpWS5ZAqoZeC2OzQYey5MK-RNzTDfvzVmCZGX5pbgvb7x0bn0o73OPvbNZPUG3Cvm_gGie_tApUHhgtKv09YpHdSK-uHciiQhBiJRuo0VN8eK2NsEY0/s320/espadines2.jpg" alt="Montaje de espadines ESP32" loading="lazy">
+        </div>
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/power-management" target="_blank" rel="noopener noreferrer">Power Management</a></h3>
+        <p>Hay dos formas de alimentar este módulo. Puede conectarse con un cable Micro USB (solo conéctelo al conector) y el Feather regulará el USB de 5V a 3.3V. También puede conectar una batería de polímero de litio de 4.2 / 3.7V (Lipo / Lipoly) o de iones de litio (LiIon) a la toma JST. Esto permitirá que el Feather funcione con una batería recargable. Cuando se alimenta la alimentación USB, cambiará automáticamente a USB para alimentación, y comenzará a cargar la batería (si está conectada) a 200 mA. Esto sucede al estilo de 'intercambio en caliente' para que siempre pueda mantener el LiPoly conectado como una energía de 'respaldo' que solo se usará cuando se pierda la alimentación del USB.</p>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCVFASGzCpKS-mCTdsWo3SwkyAWHIE1jSh1geAn1gjHlE24AOl9XbbvZZiRdcCg5VUlPR1Cdp1t7dE-7fzRHlHxrHxO5RfO0ZZZcrY-NrbmoFKSqlleM9uatJ0btRKoRfPTm1ubFb2IpM/s320/power.jpg" alt="Gestión de energía del ESP32" loading="lazy">
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/using-with-arduino-ide" target="_blank" rel="noopener noreferrer">Using with Arduino IDE</a></h3>
+        <p>Recomendamos principalmente usar el ESP32 Feather con Arduino.</p>
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNQKuGd2oTq7-DZ44Gu80sJq5mXQV_jbtazQOs0itajwuQGm8BJtowmb8349kI9hzEwEQ9j77Q791zwzzfRZHSCGkqbZd4O7IrTqRQ5834tz4hhz9GT0zpX9ZWc6Fzya_19HJC0Z6XRuM/s320/ArduinoIDE.png" alt="Arduino IDE" loading="lazy">
+    
+        <h3><a href="https://learn.adafruit.com/adafruit-huzzah32-esp32-feather/downloads" target="_blank" rel="noopener noreferrer">Downloads</a></h3>
+        <ul>
+          <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf" target="_blank" rel="noopener noreferrer">ESP32 WROOM32 Hoja de datos</a></li>
+          <li><a href="https://espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf" target="_blank" rel="noopener noreferrer">Manual técnico ESP32</a></li>
+          <li><a href="https://www.esp32.com/" target="_blank" rel="noopener noreferrer">¡No te olvides de visitar esp32.com para conocer las últimas novedades, software y chismes de ESP32!</a></li>
+          <li><a href="https://github.com/adafruit/Adafruit-HUZZAH32-ESP32-Feather-PCB" target="_blank" rel="noopener noreferrer">Archivos EagleCAD PCB en github</a></li>
+          <li><a href="https://github.com/adafruit/Fritzing-Library" target="_blank" rel="noopener noreferrer">Fritzing object en la biblioteca Adafruit Fritzing</a></li>
+          <li><a href="https://github.com/adafruit/Adafruit_CAD_Parts/tree/master/3405%20ESP32%20Feather%20HUZZAH" target="_blank" rel="noopener noreferrer">Modelos 3D en GitHub</a></li>
+          <li><a href="https://cdn-learn.adafruit.com/downloads/pdf/adafruit-huzzah32-esp32-feather.pdf?timestamp=1587572668" target="_blank" rel="noopener noreferrer">PDF</a></li>
+        </ul>
+      </div>
+    </article>
+    
 
     <section class="send-strip" aria-label="Enviar texto">
       <form id="send-form" class="send-form">
@@ -52,7 +126,7 @@
 
     <footer>Los envíos y archivos son públicos. No incluyas contraseñas ni información privada.</footer>
   </main>
-  <script src="config.js?v=20261015-send-slim-2"></script>
-  <script src="app.js?v=20261015-send-slim-2"></script>
+  <script src="config.js?v=20261015-esp32-article-1"></script>
+  <script src="app.js?v=20261015-esp32-article-1"></script>
 </body>
 </html>
