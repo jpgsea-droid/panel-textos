@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f7fb">
+  <title>Panel de textos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">ESPACIO PÚBLICO</div>
+      <h1>Panel de textos</h1>
+      <p>Envía un texto y consulta el contenido publicado.</p>
+    </header>
+    <section class="panel" aria-labelledby="send-title">
+      <div class="section-heading">
+        <span class="number">01</span>
+        <div><h2 id="send-title">Enviar un texto</h2><p>El texto enviado reemplazará el contenido de entrada.txt en GitHub.</p></div>
+      </div>
+      <form id="send-form">
+        <label for="input-text">Tu texto</label>
+        <textarea id="input-text" name="text" maxlength="20000" placeholder="Pega o escribe aquí tu texto…" required></textarea>
+        <div class="form-meta"><span id="char-count">0 / 20000</span><button id="send-button" type="submit">Enviar texto <span aria-hidden="true">↗</span></button></div>
+        <p id="send-status" class="status" role="status" aria-live="polite"></p>
+        <div class="honeypot" aria-hidden="true"><label for="website">No rellenar</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      </form>
+    </section>
+    <section class="panel" aria-labelledby="output-title">
+      <div class="section-heading">
+        <span class="number blue">02</span>
+        <div><h2 id="output-title">Texto publicado</h2><p>Este cuadro es de solo lectura y refleja el archivo salida.txt de GitHub.</p></div>
+      </div>
+      <div id="output-text" class="output" tabindex="0" aria-label="Texto publicado">Cargando contenido…</div>
+      <div class="output-footer"><span id="updated-status" class="muted">Consultando GitHub…</span><button id="refresh-button" class="secondary" type="button">Actualizar texto</button></div>
+    </section>
+    <footer>Los envíos son públicos. No incluyas contraseñas ni información privada.</footer>
+  </main>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
