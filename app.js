@@ -7,7 +7,6 @@
   const input = document.getElementById("input-text");
   const sendButton = document.getElementById("send-button");
   const sendStatus = document.getElementById("send-status");
-  const count = document.getElementById("char-count");
   const honeypot = document.getElementById("website");
   const linksToggle = document.getElementById("links-toggle");
   const linksPanel = document.getElementById("links-panel");
@@ -27,9 +26,6 @@
     sendStatus.textContent = message;
     sendStatus.className = `status ${kind}`;
   }
-  input.addEventListener("input", () => {
-    count.textContent = `${input.value.length} / 20000`;
-  });
 
   function formatUpdatedAt(value) {
     const date = new Date(value);
@@ -66,7 +62,7 @@
       button.disabled = false;
       await updateLastModified(output);
       return true;
-    } catch (error) {
+    } catch {
       output.content = null;
       output.loaded = false;
       button.disabled = true;
@@ -135,11 +131,11 @@
     }
     const text = input.value;
     if (!text.trim()) {
-      setSendStatus("Escribe o pega un texto antes de enviarlo.", "error");
+      setSendStatus("Pega o escribe un texto antes de enviarlo.", "error");
       return;
     }
     sendButton.disabled = true;
-    setSendStatus("Enviando y guardando en GitHub…");
+    setSendStatus("Enviando…");
     try {
       const response = await fetch(`${apiBase}/api/submit`, {
         method: "POST",
@@ -148,9 +144,8 @@
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "No se pudo guardar el texto.");
-      setSendStatus("Texto enviado correctamente y guardado en entrada.txt de GitHub.", "success");
+      setSendStatus("Enviado.", "success");
       input.value = "";
-      count.textContent = "0 / 20000";
     } catch (error) {
       setSendStatus(error.message || "Error de conexión. Inténtalo de nuevo.", "error");
     } finally {
@@ -158,6 +153,5 @@
     }
   });
 
-  // Fetch file timestamps/content once at startup; the panel remains collapsed.
   loadAllOutputs();
 })();
