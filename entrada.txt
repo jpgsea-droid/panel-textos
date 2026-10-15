@@ -1,1 +1,25 @@
-Comprobación final 
+
+Sistema para medir un sensor NTC
+El brillo de un led debe seguir la temperatura
+Solo cuando el NTC se encuentra en un rango de de 15 a 50 grados celcius 
+Si la temperatura supera los 40 grados un sonido debe sonar dando alarma de que se superaron los 40 grados
+El sistema debe permitir la acción de una parada de emergencia deteniendo brillo y sonido
+
+
+Que se esperaría que salga en la forma del osciloscopio conectado al buzzer (describelo)
+
+Para calibrar usaste dos puntos conocidos: 
+Cuando la temperatura esta a 5 grados el esp lee un valor adc de 3800
+Cuando esta a 95 grados (punto caliente) lee un valor ADC de 500
+
+Usando esos puntos que temperatura esperas que deuelva el código para el rango de de 15 a 50 graddos
+
+Si por un error de hardware el voltaje de referencia de tu eso aumenta ligeramente, el velor 500 ( que corresponde a 95 Tambien aumentara o disminuirá?por que?
+
+
+
+
+
+
+
+Por favor revisa que el wokwi funcione antes de enviarmelo
