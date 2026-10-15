@@ -1,1 +1,1 @@
-casilla 1 
+vacio
