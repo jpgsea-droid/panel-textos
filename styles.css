@@ -75,3 +75,74 @@ footer { text-align: center; padding: 10px 8px; color: #939dad; font-size: .74re
   .last-updated { font-size: .62rem; overflow-wrap: anywhere; }
   .file-chip { padding: 6px 10px; }
 }
+
+
+/* Artículo ESP32 importado desde el HTML proporcionado */
+.reference-article {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(18px, 4vw, 30px);
+  margin: 0 0 24px;
+  box-shadow: 0 8px 28px rgba(24, 39, 75, .035);
+  color: var(--ink);
+}
+.reference-article .article-title {
+  margin: 0 0 22px;
+  font-size: clamp(1.7rem, 5vw, 2.45rem);
+  line-height: 1.15;
+  letter-spacing: -.035em;
+  color: var(--ink);
+}
+.reference-article .article-content {
+  font-size: .97rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.reference-article .article-content h2 {
+  margin: 1rem 0 1.25rem;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+.reference-article .article-content h3 {
+  margin: 1.35rem 0 .55rem;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+.reference-article .article-content p {
+  margin: .7rem 0 1rem;
+}
+.reference-article .article-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 14px auto;
+  border-radius: 6px;
+}
+.reference-article .article-content .article-images {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.reference-article .article-content .article-images img {
+  width: min(100%, 300px);
+  object-fit: contain;
+}
+.reference-article .article-content a {
+  color: var(--blue);
+  overflow-wrap: anywhere;
+}
+.reference-article .article-content a:hover {
+  text-decoration: underline;
+}
+.reference-article .article-content ul,
+.reference-article .article-content ol {
+  padding-left: 1.4rem;
+  margin: .6rem 0 1rem;
+}
+.reference-article .article-content li {
+  margin: .25rem 0;
+}
